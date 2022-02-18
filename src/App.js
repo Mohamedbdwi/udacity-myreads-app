@@ -16,7 +16,6 @@ class BooksApp extends React.Component {
         this.setState(() => ({
           books
         }))
-        console.log(books);
       })
   }
 
@@ -25,7 +24,9 @@ class BooksApp extends React.Component {
       <div className="app">
         <Routes>
           <Route path='/' element={
-            <Landing />
+            <Landing
+              books={this.state.books}
+            />
           } />
           <Route path='/search' element={
             <Search />
