@@ -2,7 +2,7 @@ import Book from "./Book"
 
 const Shelf = ( props ) => {
 
-    const { shelf, books } = props;
+    const { shelf, books, onBookShelfUpdate } = props;
 
     return (
         <div className="bookshelf">
@@ -11,8 +11,9 @@ const Shelf = ( props ) => {
           <ol className="books-grid">
             { books.map( currentBook => (
                 <Book
-                key ={shelf.value}
-                book={currentBook}
+                key               = { shelf.value }
+                book              = { currentBook }
+                onBookShelfUpdate = { onBookShelfUpdate }
                 />
             )) }
           </ol>

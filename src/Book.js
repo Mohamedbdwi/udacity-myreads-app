@@ -1,6 +1,6 @@
 const Book = ( props ) => {
 
-    const { book } = props;
+    const { book, onBookShelfUpdate } = props;
 
     return (
         <li>
@@ -8,7 +8,7 @@ const Book = ( props ) => {
           <div className="book-top">
             <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div>
             <div className="book-shelf-changer">
-              <select value={ book.shelf }>
+              <select value={ book.shelf } onChange={ (e) => { onBookShelfUpdate( book, e )} } >
                 <option value="move" disabled>Move to...</option>
                 <option value="currentlyReading">Currently Reading</option>
                 <option value="wantToRead">Want to Read</option>

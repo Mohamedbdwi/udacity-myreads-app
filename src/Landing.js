@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 
 const Landing = ( props ) => {
 
-    const { books } = props;
+    const { books, onBookShelfUpdate } = props;
     const shelves = [{value: 'currentlyReading', title: 'Currently Reading'}, {value: 'wantToRead', title: 'Want to Read'}, {value: 'read', title: 'Read'}];
 
     return (
@@ -15,9 +15,10 @@ const Landing = ( props ) => {
           <div>
             { shelves.map( currentShelf => (
               <Shelf
-              key   ={ currentShelf.value }
-              shelf ={ currentShelf }
-              books ={books.filter( book => book.shelf === currentShelf.value )}
+              key               = { currentShelf.value }
+              shelf             = { currentShelf }
+              books             = { books.filter( book => book.shelf === currentShelf.value ) }
+              onBookShelfUpdate = { onBookShelfUpdate }
               />
             )) }
           </div>
