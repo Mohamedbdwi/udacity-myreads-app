@@ -21,13 +21,20 @@ class BooksApp extends React.Component {
 
   onBookShelfUpdate = ( book, e ) => {
     const newShelf  = e.target.value,
-      currentShelf  = book.shelf,
-      booksClone    = this.state.books;
+      currentShelf  = book.shelf;
+      // booksClone    = this.state.books;
       if ( currentShelf === 'none' ) {
-        booksClone.push( book )
-        this.setState({ books: booksClone })
+        let concatedBooks = this.state.books.concat(book);
+        // booksClone.push( book )
+        this.setState({ books: concatedBooks })
       } else {
-        booksClone[booksClone.findIndex(b => b.id === book.id)].shelf = newShelf;
+        // booksClone[booksClone.findIndex(b => b.id === book.id)].shelf = newShelf;
+        const booksClone = this.state.books.map( b => {
+          if ( b.id === book.id ) {
+            b.shelf = newShelf
+          }
+          return b;
+        })
         this.setState({ books: booksClone })
       }
 
