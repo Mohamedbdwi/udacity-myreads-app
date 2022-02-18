@@ -13,7 +13,11 @@ const Landing = ( props ) => {
         <div className="list-books-content">
           <div>
             { shelves.map( currentShelf => (
-              <Shelf key={currentShelf.value} shelf={currentShelf} />
+              <Shelf
+              key   ={ currentShelf.value }
+              shelf ={ currentShelf }
+              books ={books.filter( book => book.shelf === currentShelf.value )}
+              />
             )) }
           </div>
         </div>
