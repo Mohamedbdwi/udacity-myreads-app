@@ -20,11 +20,16 @@ class BooksApp extends React.Component {
   }
 
   onBookShelfUpdate = ( book, e ) => {
-
-    const newShelf = e.target.value;
-    const booksClone = this.state.books;
-    booksClone[booksClone.findIndex(b => b.id === book.id)].shelf = newShelf;
-    this.setState({ books: booksClone })
+    const newShelf  = e.target.value,
+      currentShelf  = book.shelf,
+      booksClone    = this.state.books;
+      if ( currentShelf === 'none' ) {
+        booksClone.push( book )
+        this.setState({ books: booksClone })
+      } else {
+        booksClone[booksClone.findIndex(b => b.id === book.id)].shelf = newShelf;
+        this.setState({ books: booksClone })
+      }
 
     BooksAPI.update(book, newShelf);
 
